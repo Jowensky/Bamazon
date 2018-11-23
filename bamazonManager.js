@@ -109,3 +109,47 @@ function addInventory() {
       });
   });
 }
+
+function newProduct() {
+  var query = connection.query(`SELECT * FROM bamazon`, function(err, res) {
+    if (err) throw err;
+
+    inquirer
+      .prompt([
+        {
+          name: "Name",
+          message: "What is the name of the product your adding?"
+        },
+        {
+          name: "Department",
+          message: "What is the department?"
+        },
+        {
+          name: "Price",
+          message: "What is the price?"
+        },
+        {
+          name: "Stock",
+          message: "What is the stock inventory?"
+        }
+      ])
+      .then(function(answer) {
+        var query = connection.query(
+          `INSERT INTO bamazon SET ?`,
+          [
+            {
+              product_name: answer.Name,
+              stock_quantity: answer.Stock,
+              department_name: answer.Department,
+              price: answer.Price
+            }
+          ],
+          function(err) {
+            if (err) throw err;
+            console.log(`New Item Inserted!`);
+            connection.end();
+          }
+        );
+      });
+  });
+}
