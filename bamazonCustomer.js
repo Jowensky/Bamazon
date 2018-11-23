@@ -13,6 +13,7 @@ connection.connect(function(err) {
   if (err) throw err;
 
   var query = connection.query("SELECT * FROM bamazon", function(err, res) {
+    if (err) throw err; 
     for (var i = 0; i < res.length; i++) {
       console.log(`ID: ${res[i]. ID} | Product: ${res[i].product_name} | Department: ${res[i].department_name} | Price: ${res[i].price} | Stock: ${res[i].stock_quantity}`);
     }
