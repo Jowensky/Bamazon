@@ -11,6 +11,9 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
+  // using inquiure to select item using id 
+  // inquire to select quanity then mutitply by column price
+
 
   var query = connection.query("SELECT * FROM bamazon", function(err, res) {
     if (err) throw err; 

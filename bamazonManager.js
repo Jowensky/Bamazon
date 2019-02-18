@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-
+  // inquire grabs from database based on chioce parameter
   inquirer
     .prompt([
       {
@@ -43,7 +43,7 @@ connection.connect(function(err) {
 function viewProducts() {
   var query = connection.query("SELECT * FROM bamazon", function(err, res) {
     if (err) throw err;
-
+    // select all from database
     for (var i = 0; i < res.length; i++) {
       console.log(
         `ID: ${res[i].ID} | Product: ${res[i].product_name} | Department: ${
