@@ -11,4 +11,4 @@
 ## Build
 * Node.js Framework
 * MySQL database
-* Inquerier command line interface
+* Inquirer.js command line interface
